@@ -1,21 +1,31 @@
 const express = require('express');
-const dotenv = require('dotenv');
+require('dotenv').config();
 const cors = require('cors');
 const config = require('./config/database')
 const { Client } = require('pg')
 
-dotenv.config();
+
 const app = express();
 
 
 
-const client = new Client(config)
-
-client
-.connect()
-.then(() => { console.log('connected to MongoDB atlas')});
+(async () => {
+    const client = new Client({
+      host: process.env.PG_HOST,
+      port: process.env.PG_PORT,
+      user: process.env.PG_USER,
+      password: process.env.PG_PASSWORD,
+      database: process.env.PG_DATABASE,
+      ssl: true,
+    });
+    await client.connect();
+    const res = await client.query('SELECT $1::text as connected', ['Connection to postgres successful!']);
+    console.log(res.rows[0].connected);
+    await client.end();
+  })();
 
 const port = process.env.PORT || 3000;
+
 
 app.use(cors());
 app.use(express.json());

@@ -1,5 +1,5 @@
 const traerProductos = async (req, res) => {
-    const response = await pool.query('SELECT * FROM productos ORDER BY id ASC');
+    const response = await pool.query('SELECT * FROM productos ORDER BY id_producto ASC');
     res.status(200).json(response.rows);
 }
 
