@@ -9,9 +9,12 @@
   "name": "ds2-restaurant-backend",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "sonarqube-scanner": "^2.7.0"
+  },
   "scripts": {
     "dev": "nodemon src/index.js",
+    "sonar": "sonar-scanner",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
