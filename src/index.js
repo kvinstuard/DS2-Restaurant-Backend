@@ -3,6 +3,7 @@ require('dotenv').config();
 const cors = require('cors');
 const config = require('./config/database')
 const { Client } = require('pg')
+const rutas = require("./routes/route")
 
 
 const app = express();
@@ -26,6 +27,9 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
+
+//MIDDLEWARE
+app.use('/api', rutas)
 
 app.use(cors());
 app.use(express.json());
