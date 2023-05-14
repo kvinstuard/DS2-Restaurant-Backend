@@ -9,10 +9,10 @@ const {traerOrdenes} = require('../controller/orders');
 //PARA PRODUCTOS
 const {registrarProducto, traerProductos} = require('../controller/products');
 
-router.get('/', traerOrdenes );
-router.get('/api/productos', traerProductos);
-router.post('/api/register', registrarUsuario);
-router.post('/api/register', registrarProducto);
+router.get('/ordenes', traerOrdenes );
+router.get('/productos', traerProductos);
+router.post('/usuario/register', registrarUsuario);
+router.post('/productos/register', registrarProducto);
 
 
 
