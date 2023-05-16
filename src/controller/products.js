@@ -9,15 +9,16 @@ const traerProductos = async (req,res) => {
 
 
 const registrarProducto = async (req, res) => {
-    const { name, email } = req.body;
-    const response  = await pool.query('INSERT INTO usuarios (name, email) VALUES ($1, $2)', [name, email]);
+    const { nombre, precio, categoria } = req.body;
+    const response  = await pool.query('INSERT INTO productos (nombre, precio, categoria) VALUES ($1, $2, $3)', [nombre, precio, categoria]);
     res.json({
         message: 'User Added successfully',
         body: {
-            user: {name, email}
+            user: {nombre, precio, categoria}
         }
     })
 };
+
 module.exports ={
     traerProductos,
     registrarProducto
