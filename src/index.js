@@ -1,8 +1,7 @@
 const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
-const config = require('./config/database')
-const { Client } = require('pg')
+const {getClient} = require('./config/database')
 const rutas = require("./routes/route")
 
 
@@ -11,15 +10,8 @@ const app = express();
 
 
 (async () => {
-    const client = new Client({
-      host: process.env.PG_HOST,
-      port: process.env.PG_PORT,
-      user: process.env.PG_USER,
-      password: process.env.PG_PASSWORD,
-      database: process.env.PG_DATABASE,
-      ssl: true, 
-    });
-    await client.connect();
+    const client = await getClient();
+
     const res = await client.query('SELECT $1::text as connected', ['Connection to postgres successful!']);
     console.log(res.rows[0].connected);
     await client.end();
@@ -38,6 +30,4 @@ app.get('/', (req,res) => {
     res.send('Backend Server');
 });
 
-const server = app.listen(port, () => {console.log('server listening on port', port); }) 
-
-module.exports = { app, server }
+app.listen(port, () => {console.log('server listening on port', port); }) 
