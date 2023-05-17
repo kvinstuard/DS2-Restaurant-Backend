@@ -20,11 +20,12 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 
+app.use(express.json());
+
 //MIDDLEWARE
 app.use('/api', rutas)
 
 app.use(cors());
-app.use(express.json());
 
 app.get('/', (req,res) => {
     res.send('Backend Server');
