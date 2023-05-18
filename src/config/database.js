@@ -1,16 +1,16 @@
+const { Client } = require("pg");
 require('dotenv').config();
 
-const config = {
-  env: process.env.NODE_ENV || 'dev',
-  port: process.env.PORT || 3000,
-  dbUser:  process.env.DB_USER,
-  dbPassword:  process.env.DB_PASSWORD,
-  dbHost:  process.env.DB_HOST,
-  dbName:  process.env.DB_NAME,
-  dbPort:  process.env.DB_PORT,
-}
 
-/*
-
-*/
-module.exports = { config };
+module.exports.getClient = async () => {
+const client = new Client({
+  host: process.env.PG_HOST,
+      port: process.env.PG_PORT,
+      user: process.env.PG_USER,
+      password: process.env.PG_PASSWORD,
+      database: process.env.PG_DATABASE,
+      ssl: true,
+    });
+    await client.connect();
+    return client;
+  };
