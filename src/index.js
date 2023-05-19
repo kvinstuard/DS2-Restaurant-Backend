@@ -8,8 +8,10 @@ const rutas = require("./routes/route")
 const app = express();
 
 
+
 (async () => {
     const client = await getClient();
+
     const res = await client.query('SELECT $1::text as connected', ['Connection to postgres successful!']);
     console.log(res.rows[0].connected);
     await client.end();
@@ -18,8 +20,9 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 
-//MIDDLEWARE
 app.use(express.json());
+
+//MIDDLEWARE
 app.use('/api', rutas)
 
 app.use(cors());
@@ -30,7 +33,7 @@ app.get('/', (req,res) => {
 
 const server = app.listen(port, () => {console.log('server listening on port', port); }) 
 
-module.exports={
-  app,
-  server
+module.exports = {
+  server,
+  app
 }

@@ -9,19 +9,21 @@ const traerOrdenes = async (req, res) => {
 
 
 const registrarOrden = async (req, res) => {
-    const { nombre, cedula, telefono, correo, contraseña, orden1,orden2,orden3 } = req.body;
+    const pool = await getClient();
+    const { nombre, cedula, telefono, correo, orden1 ,orden2 ,orden3, direccion } = req.body;
     const response  = await pool.query(
-        'INSERT INTO productos (nombre, cedula, telefono, correo, contraseña, orden1,orden2,orden3, direccion) VALUES ($1, $2)'
-        , [nombre, cedula, telefono, correo, contraseña, orden1,orden2,orden3 ]);
+        'INSERT INTO ordenes (nombre, cedula, telefono, correo, orden1, orden2, orden3, direccion) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)'
+        , [nombre, cedula, telefono, correo, orden1 ,orden2 ,orden3, direccion ]);
     res.json({
         message: 'Orden Registrada, en un momento la atenderemos',
         body: {
-            user: {nombre, cedula, telefono, correo, contraseña, orden1,orden2,orden3 }
+            user: {nombre, cedula, telefono, correo, orden1 ,orden2 ,orden3, direccion }
         }
     })
 };
 
 const OrdenRecibida = async (req, res) => {
+    const pool = await getClient();
     try {
       const { id } = req.params;
       const { estado} = req.body;
