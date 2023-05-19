@@ -31,4 +31,9 @@ app.get('/', (req,res) => {
     res.send('Backend Server');
 });
 
-app.listen(port, () => {console.log('server listening on port', port); }) 
+const server = app.listen(port, () => {console.log('server listening on port', port); }) 
+
+module.exports = {
+  server,
+  app
+}

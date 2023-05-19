@@ -28,10 +28,4 @@ router.post('/usuario/:id_usuario',actualizarUsuario,)
 
 
 
-
-
-
-
-
-
 module.exports = router;
