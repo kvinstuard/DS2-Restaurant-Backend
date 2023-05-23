@@ -32,27 +32,24 @@ jobs:
     - name: Install dependencies
       run: npm install
     
-   # - name: Run tests
-   #   run: npm test
+    - name: Run tests
+      run: npm test
 
-  sonar:
-    runs-on: ubuntu-latest
-    steps:
-      - name: SonarCloud Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    - name: SonarCloud Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     
-      - name: Slack Notification (Success)
-        uses: act10ns/slack@v1
-        with: 
-          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
-          status: success
-          channel: '#actions'
-          message: Tests end successfully
-        if: always()
+    - name: Slack Notification (Success)
+      uses: act10ns/slack@v1
+      with: 
+        webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+        status: success
+        channel: '#actions'
+        message: Tests end successfully
+      if: always()
