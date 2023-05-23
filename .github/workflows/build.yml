@@ -18,6 +18,7 @@ jobs:
         image: postgres:12
         env: 
           POSTGRES_DB: ${{ secrets.PG_DATABASE }}
+          POSTGRES_HOST: ${{ secrets.PG_HOST }}
           POSTGRES_PASSWORD: ${{ secrets.PG_PASSWORD }}
           POSTGRES_USER: ${{ secrets.PG_USER }}
         options: >-
@@ -57,11 +58,11 @@ jobs:
         POSTGRES_USER: ${{ secrets.PG_USER }}
 
 
-    - name: Install pgmigrate
-      run: npm install node-pg-migrate pg
+    #- name: Install pgmigrate
+    #  run: npm install node-pg-migrate pg
 
-    - name: Run migration
-      run: npm run migrate
+    #- name: Run migration
+    #  run: npm run migrate
 
     - name: Run ESlint
       run: npm run lint
