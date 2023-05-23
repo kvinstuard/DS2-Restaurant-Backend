@@ -4,7 +4,7 @@ const traerOrdenes = async (req, res) => {
     const pool = await getClient();
     const response = await pool.query('SELECT * FROM ordenes ORDER BY id_orden ASC');
     res.status(200).json(response.rows);
-    pool.end()
+    await pool.end()
 };
 
 
@@ -21,7 +21,7 @@ const registrarOrden = async (req, res) => {
             user: {nombre, cedula, telefono, correo, orden1 ,orden2 ,orden3, direccion }
         }
     })
-    pool.end()
+    await pool.end()
 };
 
 const OrdenRecibida = async (req, res) => {
@@ -42,7 +42,7 @@ const OrdenRecibida = async (req, res) => {
     } catch (error) {
       next(error);
     }
-    pool.end()
+    await pool.end()
   };
 
 
