@@ -3,7 +3,7 @@ const {getClient} = require('../config/database')
 
 const traerUsuario = async (req,res) => {
     const pool = await getClient();
-    const response = await pool.query('SELECT * FROM usuarios ORDER BY id_usuario ASC');
+    const response = await pool.query('SELECT * FROM usuario ORDER BY id_usuario ASC');
     res.status(200).json(response.rows);
     
 };
@@ -18,7 +18,7 @@ const traerUsuarioId = async (req, res)  => {
 const registrarUsuario = async (req, res) => {
     const pool = await getClient();
     const { name, email } = req.body;
-    const response = await pool.query('INSERT INTO usuarios (name, email) VALUES ($1, $2)', [name, email]);
+    const response = await pool.query('INSERT INTO usuario (nombre, correo) VALUES ($1, $2)', [name, email]);
     res.json({
         message: 'User Added successfully',
         body: {
@@ -49,7 +49,7 @@ const actualizarUsuario = async (req, res) => {
 
   const borrarUsuario = async (req, res) => {
     const id = parseInt(req.params.id);
-    await pool.query('DELETE FROM users where id = $1', [
+    await pool.query('DELETE FROM usuario where id = $1', [
         id
     ]);
     res.json(`User ${id} deleted Successfully`);

@@ -18,6 +18,7 @@
     "dev": "nodemon src/index.js",
     "sonar": "sonar-scanner",
     "test": "jest --verbose --silent",
+    "test:watch": "npm run test -- --watch",
     "lint": "eslint .",
     "test:coverage": "jest --coverage --silent"
   },
