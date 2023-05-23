@@ -1,6 +1,9 @@
 name: Test Node.js App
 
 on:
+  #push:
+  #  branches:
+  #    - feature_fix
   pull_request:
     branches:
       - develop
