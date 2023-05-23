@@ -12,7 +12,7 @@ jobs:
   testing:
     runs-on: ubuntu-latest
     steps:
-    - name: Slack Notification
+    - name: Slack Notification (Starting)
       uses: act10ns/slack@v1
       with: 
         webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
@@ -37,7 +37,8 @@ jobs:
 
     - name: SonarCloud
       steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code (SonarCloud)
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: SonarCloud Scan
@@ -46,12 +47,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     
-    - name: Slack Notification
-      uses: act10ns/slack@v2
+    - name: Slack Notification (Success)
+      uses: act10ns/slack@v1
       with: 
         webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
         status: success
         channel: '#actions'
         message: Tests end successfully
       if: always()
-      
