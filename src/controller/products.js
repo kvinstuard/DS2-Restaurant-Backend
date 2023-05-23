@@ -6,6 +6,7 @@ const traerProductos = async (req,res) => {
     const pool = await getClient();
     const response = await pool.query('SELECT * FROM productos ORDER BY id_producto ASC');
     res.status(200).json(response.rows);
+    pool.end()
     
 };
 
@@ -24,6 +25,7 @@ const registrarProducto = async (req, res) => {
 } catch (error) {
     next(error);
   }
+  pool.end()
 };
 
 module.exports ={

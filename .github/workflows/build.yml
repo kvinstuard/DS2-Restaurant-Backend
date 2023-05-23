@@ -1,0 +1,58 @@
+name: Test Node.js App
+
+on:
+  push:
+    branches:
+      - feature_fix
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Slack Notification (Starting)
+      uses: act10ns/slack@v1
+      with: 
+        webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+        status: starting
+        channel: '#actions'
+        message: Starting Build and Test...
+      if: always()
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run ESlint
+      run: npm run lint
+    
+    - name: Run tests
+      run: npm test 
+
+    - name: SonarCloud Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    
+    - name: Slack Notification (Success)
+      uses: act10ns/slack@v1
+      with: 
+        webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+        status: success
+        channel: '#actions'
+        message: Tests end successfully
+      if: always()

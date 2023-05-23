@@ -1,13 +1,12 @@
-name: Test Node.js App
+name: Node.js App
 
 on:
   pull_request:
     branches:
       - main
-      - develop
 
 jobs:
-  test-and-docker:
+  build-and-docker:
     runs-on: ubuntu-latest
     steps:
     - name: Slack Notification
