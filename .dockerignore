@@ -1,6 +1,3 @@
 node_modules
 npm-debug.log
 .env
-.scannerwork
-coverage
-sonar-project.properties
