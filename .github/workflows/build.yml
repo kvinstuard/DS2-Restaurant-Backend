@@ -25,7 +25,7 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-          
+
     steps:
     - name: Slack Notification (Starting)
       uses: act10ns/slack@v1
@@ -48,7 +48,7 @@ jobs:
       run: npm install
 
     - name: connect to PostgresSQL
-      run: node database.js
+      run: node index.js
       env: 
         POSTGRES_HOST: ${{ secrets.PG_HOST }}
         POSTGRES_PORT: 5432
@@ -76,4 +76,4 @@ jobs:
         status: success
         channel: '#actions'
         message: Tests end successfully
-      if: always()
+      if: success()
