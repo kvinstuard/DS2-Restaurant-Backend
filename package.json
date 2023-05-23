@@ -22,7 +22,8 @@
     "test": "jest --verbose --silent",
     "test:watch": "npm run test -- --watch",
     "lint": "eslint .",
-    "test:coverage": "jest --coverage --silent"
+    "test:coverage": "jest --coverage --silent",
+    "migrate": "node-pg-migrate"
   },
   "keywords": [],
   "author": "",
