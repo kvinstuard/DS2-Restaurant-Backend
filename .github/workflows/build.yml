@@ -48,7 +48,7 @@ jobs:
       run: npm install
 
     - name: connect to PostgresSQL
-      run: node index.js
+      run: node /src/config/database.js
       env: 
         POSTGRES_HOST: ${{ secrets.PG_HOST }}
         POSTGRES_PORT: 5432
