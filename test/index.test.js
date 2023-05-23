@@ -1,4 +1,5 @@
 
+const { Pool } = require('pg');
 const { app, server} = require('../src/index');
 const supertest = require('supertest');
 const api = supertest(app)
@@ -90,5 +91,4 @@ describe('Testing POST/', () => {
 //Cerrar servidor
 afterAll(()=>{
     server.close()
-    //Cerrar conexion con la BD
 })

@@ -5,6 +5,7 @@ const traerUsuario = async (req,res) => {
     const pool = await getClient();
     const response = await pool.query('SELECT * FROM usuario ORDER BY id_usuario ASC');
     res.status(200).json(response.rows);
+    pool.end()
     
 };
 
@@ -13,7 +14,9 @@ const traerUsuarioId = async (req, res)  => {
     const pool = await getClient();
     const id = parseInt(req.params.id_usuario);
     const response = await pool.query('SELECT * FROM usuario WHERE id_usuario = $1', [id]);
+    pool.end()
     return res.json(response.rows);
+    
 };
 
 const registrarUsuario = async (req, res) => {
@@ -26,6 +29,7 @@ const registrarUsuario = async (req, res) => {
             user: {name, email}
         }
     })
+    pool.end()
 };
 
 const actualizarUsuario = async (req, res) => {
@@ -46,6 +50,7 @@ const actualizarUsuario = async (req, res) => {
     } catch (error) {
       next(error);
     }
+    pool.end()
   };
 
   const borrarUsuario = async (req, res) => {
@@ -54,6 +59,7 @@ const actualizarUsuario = async (req, res) => {
         id
     ]);
     res.json(`User ${id} deleted Successfully`);
+    pool.end()
 };
 module.exports={
     registrarUsuario,
