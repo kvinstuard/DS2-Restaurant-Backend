@@ -10,7 +10,8 @@ const traerUsuario = async (req,res) => {
 
 
 const traerUsuarioId = async (req, res)  => {
-    const id = parseInt(req.params.id);
+    const pool = await getClient();
+    const id = parseInt(req.params.id_usuario);
     const response = await pool.query('SELECT * FROM usuario WHERE id_usuario = $1', [id]);
     return res.json(response.rows);
 };

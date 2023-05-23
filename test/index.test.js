@@ -24,6 +24,14 @@ describe('Testing GET/', () => {
             .expect(200)
     })
 
+    test('should respond with a 200 status code', async ()=>{
+        await api
+            .get('/api/usuario/1').send()
+            .expect(200)
+    })
+
+    
+
 })
 
 describe('Testing POST/', () => {
