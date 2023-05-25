@@ -24,6 +24,7 @@ const registrarOrden = async (req, res) => {
     await pool.end()
 };
 
+/*
 const OrdenRecibida = async (req, res) => {
     const pool = await getClient();
     try {
@@ -44,12 +45,10 @@ const OrdenRecibida = async (req, res) => {
     }
     await pool.end()
   };
-
+*/
 
 module.exports= {
     traerOrdenes,
-    registrarOrden,
-    OrdenRecibida
-    
-    
+    registrarOrden
+    //OrdenRecibida
 };

@@ -35,12 +35,11 @@ const registrarUsuario = async (req, res) => {
 const actualizarUsuario = async (req, res) => {
     const pool = await getClient();
     try {
-      const { id } = req.params;
-      const { estado} = req.body;
-  
+      const id = parseInt(req.params.id);
+      const  email  = req.body;
       const result = await pool.query(
-        "UPDATE usuario SET email = $1,   WHERE id = $3 RETURNING *",
-        [estado, id]
+        "UPDATE usuario SET correo = $1  WHERE id_usuario = $2 RETURNING *",
+        [email, id]
       );
   
       if (result.rows.length === 0)
