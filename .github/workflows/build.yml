@@ -29,7 +29,7 @@ jobs:
           --health-retries 5
         ports:
           - 5432:5432
-          
+
     steps:
     - name: Slack Notification (Starting)
       uses: act10ns/slack@v1
@@ -51,20 +51,20 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    #- name: connect to PostgresSQL
-    #  run: node ./src/config/database.js
-    #  env: 
-    #    POSTGRES_HOST: ${{ secrets.PG_HOST }}
-    #    POSTGRES_PORT: 5432
-    #    POSTGRES_DB: ${{ secrets.PG_DATABASE }}
-    #    POSTGRES_PASSWORD: ${{ secrets.PG_PASSWORD }}
-    #    POSTGRES_USER: ${{ secrets.PG_USER }}
+    - name: connect to PostgresSQL
+      run: node ./src/index.js
+      env: 
+        POSTGRES_HOST: ${{ secrets.PG_HOST }}
+        POSTGRES_PORT: 5432
+        POSTGRES_DB: ${{ secrets.PG_DATABASE }}
+        POSTGRES_PASSWORD: ${{ secrets.PG_PASSWORD }}
+        POSTGRES_USER: ${{ secrets.PG_USER }}
 
     - name: Run ESlint
       run: npm run lint
     
     - name: Run tests
-      run: npm test 
+      run: npm test:nowatch
 
     - name: SonarCloud Checkout code
       uses: actions/checkout@v3
