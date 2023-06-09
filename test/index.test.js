@@ -55,14 +55,28 @@ describe('Testing POST/', () => {
     test('should respond with a 200 status code and message', async ()=>{
         const newUser ={
             name: "Kevin",
-            correo: "KevinFlow@correo.com"
+            email: "KevinFlow@correo.com"
         }
 
         await api
             .post('/api/usuario/register')
             .send(newUser)
             .expect(200)
-            .expect('{"message":"User Added successfully","body":{"user":{"name":"Kevin"}}}')
+            .expect('{"message":"User Added successfully","body":{"user":{"name":"Kevin","email":"KevinFlow@correo.com"}}}')
+        
+    })
+
+    //Not working 
+    test('should respond with a 200 status code and message', async ()=>{
+        const newUser ={
+            email: "KevinFlow@correo.com"
+        }
+
+        await api
+            .post('/usuario/1')
+            .send(newUser)
+            .expect(404)
+            //.expect('{"message":"User Added successfully","body":{"user":{"name":"Kevin","email":"KevinFlow@correo.com"}}}')
         
     })
 

@@ -5,14 +5,14 @@ const router = Router();
 const {registrarUsuario, traerUsuario, traerUsuarioId, actualizarUsuario, borrarUsuario} = require('../controller/user');
 
 // PARA ORDENES
-const {traerOrdenes, registrarOrden, OrdenRecibida} = require('../controller/orders');
+const {traerOrdenes, registrarOrden} = require('../controller/orders');
 //PARA PRODUCTOS
 const {registrarProducto, traerProductos} = require('../controller/products');
 
 //ORDENES
 router.post('/ordenes/register', registrarOrden );
 router.get('/ordenes', traerOrdenes );
-router.post('/ordenes/:id_orden',OrdenRecibida)
+//router.post('/ordenes/:id_orden',OrdenRecibida)
 
 //PRODUCTOS
 router.post('/productos/register', registrarProducto);
@@ -23,7 +23,7 @@ router.post('/usuario/register', registrarUsuario);
 router.get('/usuario/', traerUsuario);
 router.get('/usuario/:id_usuario', traerUsuarioId);
 router.delete('/usuario/:id_usuario', borrarUsuario)
-router.post('/usuario/:id_usuario',actualizarUsuario,)
+router.post('/usuario/:id_usuario', actualizarUsuario)
 
 
 

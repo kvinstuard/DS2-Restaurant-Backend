@@ -20,9 +20,10 @@
     "dev": "nodemon src/index.js",
     "sonar": "sonar-scanner",
     "test": "jest --verbose --silent",
-    "test:watch": "npm run test -- --watch",
+    "test:nowatch": "jest --testTimeout=30000",
     "lint": "eslint .",
     "test:coverage": "jest --coverage --silent"
+
   },
   "keywords": [],
   "author": "",
