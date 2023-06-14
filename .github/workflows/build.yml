@@ -40,7 +40,7 @@ jobs:
         env:
           PGPASSWORD: ${{ secrets.PG_PASSWORD }}
         run: npm test #this is very likely to fail
-        run: psql -h ${{ secrets.PG_HOST }} -d ${{ secrets.PG_DATABASE }} -U ${{ secrets.PG_USER }} -c 'SELECT * FROM ordenes;'
+        #run: psql -h ${{ secrets.PG_HOST }} -d ${{ secrets.PG_DATABASE }} -U ${{ secrets.PG_USER }} -c 'SELECT * FROM ordenes;'
 
       - name: Slack Notification (Starting)
         uses: act10ns/slack@v1
