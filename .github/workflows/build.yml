@@ -37,9 +37,9 @@ jobs:
           apt-get install --yes postgresql-client
 
       - name: Query database
-        run: psql -h ${{ env.POSTGRES_HOST }} -d ${{ env.POSTGRES_DB }} -U ${{ env.POSTGRES_USER }} -c 'SELECT 1;'
         env:
           PGPASSWORD: ${{ secrets.PG_PASSWORD }}
+        run: psql -h ${{ env.POSTGRES_HOST }} -d ${{ env.POSTGRES_DB }} -U ${{ env.POSTGRES_USER }} -c 'SELECT 1;'
 
       - name: Slack Notification (Starting)
         uses: act10ns/slack@v1
