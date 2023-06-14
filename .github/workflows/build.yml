@@ -36,11 +36,11 @@ jobs:
           apt-get update
           apt-get install --yes postgresql-client
 
-      """- name: Query database
-        env:
-          PGPASSWORD: ${{ secrets.PG_PASSWORD }}
-        run: psql -h ${{ secrets.PG_HOST }} -d ${{ secrets.PG_DATABASE }} -U ${{ secrets.PG_USER }} -c 'SELECT * FROM ordenes;'
-      """
+      #- name: Query database
+      #  env:
+      #    PGPASSWORD: ${{ secrets.PG_PASSWORD }}
+      #  run: psql -h ${{ secrets.PG_HOST }} -d ${{ secrets.PG_DATABASE }} -U ${{ secrets.PG_USER }} -c 'SELECT * FROM ordenes;'
+      
       - name: Slack Notification (Starting)
         uses: act10ns/slack@v1
         with:
