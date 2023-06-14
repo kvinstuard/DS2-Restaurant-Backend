@@ -65,7 +65,7 @@ jobs:
         run: npm run lint
 
       - name: Run tests
-        working-directory: ./src/config
+        working-directory: ../src/config
         env:
           POSTGRES_HOST: ${{ secrets.PG_HOST }}
           PGPASSWORD: ${{ secrets.PG_PASSWORD }}
