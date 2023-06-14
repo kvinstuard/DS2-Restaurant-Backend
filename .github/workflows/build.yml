@@ -17,11 +17,11 @@ jobs:
       postgres:
         image: postgres
         env:
-          - POSTGRES_DB=${{ secrets.PG_DATABASE }}
-          - POSTGRES_HOST=${{ secrets.PG_HOST }}
-          - POSTGRES_PASSWORD=${{ secrets.PG_PASSWORD }}
-          - POSTGRES_PORT=5432
-          - POSTGRES_USER=${{ secrets.PG_USER }}
+          POSTGRES_DB=${{ secrets.PG_DATABASE }}
+          POSTGRES_HOST=${{ secrets.PG_HOST }}
+          POSTGRES_PASSWORD=${{ secrets.PG_PASSWORD }}
+          POSTGRES_PORT=5432
+          POSTGRES_USER=${{ secrets.PG_USER }}
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
