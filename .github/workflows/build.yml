@@ -55,7 +55,7 @@ jobs:
       run: npm run lint
     
     - name: Run tests
-      run: npm test:nowatch
+      run: npm test
 
     - name: SonarCloud Checkout code
       uses: actions/checkout@v3
