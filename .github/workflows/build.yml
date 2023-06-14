@@ -39,7 +39,7 @@ jobs:
       - name: Query database
         env:
           PGPASSWORD: ${{ secrets.PG_PASSWORD }}
-        run: psql -h ${{ secrets.POSTGRES_HOST }} -d ${{ secrets.POSTGRES_DB }} -U ${{ secrets.POSTGRES_USER }} -c 'SELECT 1;'
+        run: psql -h ${{ secrets.PG_HOST }} -d ${{ secrets.PG_DATABASE }} -U ${{ secrets.PG_USER }} -c 'SELECT 1;'
 
       - name: Slack Notification (Starting)
         uses: act10ns/slack@v1
