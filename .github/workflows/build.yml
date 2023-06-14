@@ -56,8 +56,6 @@ jobs:
     
     - name: Run tests
       run: npm test:nowatch
-      env:
-        DBURL: postgres://${{ secrets.PG_HOST }}:${{ secrets.PG_PASSWORD }}@${{ secrets.PG_HOST }}:5432/postgres
 
     - name: SonarCloud Checkout code
       uses: actions/checkout@v3
