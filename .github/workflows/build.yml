@@ -66,10 +66,8 @@ jobs:
 
       - name: Run tests
         env:
-          POSTGRES_HOST: ${{ secrets.PG_HOST }}
-          POSTGRES_PASSWORD: ${{ secrets.PG_PASSWORD }}
-          POSTGRES_PORT: 5432
-        run: npm test #this is very likely to fail
+          DATABASE_URL: postgres://${{ secrets.PG_USER }}:${{ secrets.PG_PASSWORD }}@127.0.0.1:${{ job.services.postgres.ports['5432'] }}/${{ secrets.PG_DATABASE }}
+        run: npm test
 
       - name: SonarCloud Checkout code
         uses: actions/checkout@v2
