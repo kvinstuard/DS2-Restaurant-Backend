@@ -1,4 +1,4 @@
-name: Test Node.js App
+name: test-nodejs-app
 
 on:
   push:
@@ -16,12 +16,12 @@ jobs:
     services:
       postgres:
         image: postgres
-        env: 
-          POSTGRES_DB: ${{ secrets.PG_DATABASE }}
-          POSTGRES_HOST: ${{ secrets.PG_HOST }}
-          POSTGRES_PASSWORD: ${{ secrets.PG_PASSWORD }}
-          POSTGRES_PORT: 5432
-          POSTGRES_USER: ${{ secrets.PG_USER }}
+        env:
+          - POSTGRES_DB=${{ secrets.PG_DATABASE }}
+          - POSTGRES_HOST=${{ secrets.PG_HOST }}
+          - POSTGRES_PASSWORD=${{ secrets.PG_PASSWORD }}
+          - POSTGRES_PORT=5432
+          - POSTGRES_USER=${{ secrets.PG_USER }}
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -37,52 +37,51 @@ jobs:
           apt-get install --yes postgresql-client
 
       - name: Query database
-        run: psql -h postgres -d postgres_db -U postgres_user -c 'SELECT 1;'
+        run: psql -h ${{ env.POSTGRES_HOST }} -d ${{ env.POSTGRES_DB }} -U ${{ env.POSTGRES_USER }} -c 'SELECT 1;'
         env:
           PGPASSWORD: ${{ secrets.PG_PASSWORD }}
 
-    steps:
-    - name: Slack Notification (Starting)
-      uses: act10ns/slack@v1
-      with: 
-        webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
-        status: starting
-        channel: '#actions'
-        message: Starting Build and Test...
-      if: always()
+      - name: Slack Notification (Starting)
+        uses: act10ns/slack@v1
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          status: starting
+          channel: '#actions'
+          message: Starting Build and Test...
+        if: always()
 
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: 14
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Run ESlint
-      run: npm run lint
-    
-    - name: Run tests
-      run: npm test
+      - name: Run ESlint
+        run: npm run lint
 
-    - name: SonarCloud Checkout code
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-    - name: SonarCloud Scan
-      uses: SonarSource/sonarcloud-github-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-    
-    - name: Slack Notification (Success)
-      uses: act10ns/slack@v1
-      with: 
-        webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
-        status: success
-        channel: '#actions'
-        message: Tests end successfully
-      if: success()
+      - name: Run tests
+        run: npm test
+
+      - name: SonarCloud Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: Slack Notification (Success)
+        uses: act10ns/slack@v1
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          status: success
+          channel: '#actions'
+          message: Tests end successfully
+        if: success()
