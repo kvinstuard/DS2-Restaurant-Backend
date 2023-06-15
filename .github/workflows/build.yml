@@ -65,9 +65,10 @@ jobs:
         run: npm run lint
 
       - name: Run tests
+        run: npm test
         env:
           DATABASE_URL: postgres://${{ secrets.PG_USER }}:${{ secrets.PG_PASSWORD }}@${{ secrets.PG_HOST }}:${{ job.services.postgres.ports['5432'] }}/${{ secrets.PG_DATABASE }}
-        run: npm test
+        
 
       - name: SonarCloud Checkout code
         uses: actions/checkout@v2
