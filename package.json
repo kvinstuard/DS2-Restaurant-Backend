@@ -19,7 +19,7 @@
   "scripts": {
     "dev": "nodemon src/index.js",
     "sonar": "sonar-scanner",
-    "test": "jest --verbose --silent --testTimeout=30000",
+    "test": "jest --verbose --silent",
     "test:nowatch": "jest --testTimeout=30000",
     "lint": "eslint .",
     "test:coverage": "jest --coverage --silent"
