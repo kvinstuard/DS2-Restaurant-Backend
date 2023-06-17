@@ -22,7 +22,7 @@
     "dev": "nodemon src/index.js",
     "sonar": "sonar-scanner",
     "test": "jest --verbose --silent",
-    "test:nowatch": "jest --testTimeout=30000",
+    "test:detect": "jest --detectOpenHandles",
     "lint": "eslint .",
     "test:coverage": "jest --coverage --silent"
   },
