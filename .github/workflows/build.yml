@@ -11,7 +11,9 @@ on:
 jobs:
   container-job:
     runs-on: ubuntu-latest
-    container: node:latest
+    strategy:
+        matrix:
+          node-version: [14.x]
 
     services:
       postgres:
@@ -28,24 +30,24 @@ jobs:
           --health-timeout 5s
           --health-retries 5
 
-
     steps:
-      - name: Slack Notification (Starting)
-        uses: act10ns/slack@v1
-        with:
-          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
-          status: starting
-          channel: '#actions'
-          message: Starting Build and Test...
-        if: always()
+
+     # - name: Slack Notification (Starting)
+     #   uses: act10ns/slack@v1
+     #   with:
+     #     webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+     #     status: starting
+     #     channel: '#actions'
+     #     message: Starting Build and Test...
+     #   if: always()
 
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: ${{ matrix.node-version }}
 
       - name: Install dependencies
         run: npm install
@@ -54,13 +56,13 @@ jobs:
       #  run: npm run lint
 
       - name: Run tests
-        run: npm test
+        run: npm run test
         env:
-          DB_USER: ${{ secrets.POSTGRES_USER }}
-          DB_HOST: ${{ secrets.POSTGRES_HOST }}
-          DATABASE: ${{ secrets.POSTGRES_DB }}
-          DB_HMAC: ${{ secrets.POSTGRES_PASSWORD }}
-          DB_PORT: ${{ secrets.POSTGRES_DB_PORT }}
+          DB_USER: ${{ secrets.PG_USER }}
+          DB_HOST: ${{ secrets.PG_HOST }}
+          DATABASE: ${{ secrets.PG_DATABASE }}
+          DB_HMAC: ${{ secrets.PG_PASSWORD }}
+          DB_PORT: ${{ secrets.PG_PORT }}
           DB_DIALECT: 'postgres'
           DB_POOL_CONNECTION_LIMIT: ${{ secrets.POSTGRES_DB_POOL_CONNECTION_LIMIT }}
           DB_POOL_IDLE_TIMEOUT: ${{ secrets.POSTGRES_DB_POOL_IDLE_TIMEOUT }}
