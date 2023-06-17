@@ -66,6 +66,7 @@ const ordenes = sequelizeInstance.define('ordenes', {
 });
 
 // Create the table if it doesn't exist
+/*
 ordenes.sync({ force: false })
   .then(() => {
     console.log('Orden table created');
@@ -73,6 +74,7 @@ ordenes.sync({ force: false })
   .catch(err => {
     console.error('Error creating Orden table:', err);
   });
+  */
 
   return ordenes
 };

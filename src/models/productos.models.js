@@ -29,6 +29,7 @@ const productos = sequelizeInstance.define('productos', {
 });
 
 // Create the table if it doesn't exist
+/*
 productos.sync({ force: false })
   .then(() => {
     console.log('Producto table created');
@@ -36,5 +37,6 @@ productos.sync({ force: false })
   .catch(err => {
     console.error('Error creating Producto table:', err);
   });
+  */
   return productos
 };

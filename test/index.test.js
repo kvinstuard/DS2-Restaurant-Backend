@@ -8,11 +8,6 @@ const sequelizeInstance = models.sequelizeInstance;
 const { Pool } = require('pg');
 const { app, server} = require('../src/index');
 const supertest = require('supertest');
-const usuarioModels = require('../src/models/usuario.models');
-const ordenesModel = require('../src/models/ordenes.model');
-const { awaitExpression } = require('@babel/types');
-const productosModels = require('../src/models/productos.models');
-const { userInfo } = require('os');
 const api = supertest(app)
     
 

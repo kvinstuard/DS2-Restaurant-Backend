@@ -5,7 +5,6 @@ const {
 	PG_PASSWORD,
 	PG_HOST,
 	PG_PORT,
-	PG_DIALECT,
 	PG_POOL_CONNECTION_LIMIT,
 	PG_POOL_IDLE_TIMEOUT,
 } = require("../config/database");
