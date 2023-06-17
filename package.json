@@ -4,7 +4,9 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "nodemon": "^2.0.22",
-    "pg": "^8.10.0"
+    "pg": "^8.11.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.32.1"
   },
   "name": "ds2-restaurant-backend",
   "version": "1.0.0",
@@ -23,7 +25,6 @@
     "test:nowatch": "jest --testTimeout=30000",
     "lint": "eslint .",
     "test:coverage": "jest --coverage --silent"
-
   },
   "keywords": [],
   "author": "",
