@@ -1,0 +1,88 @@
+name: test-nodejs-app
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  container-job:
+    runs-on: ubuntu-latest
+    strategy:
+        matrix:
+          node-version: [14.x]
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: ${{ secrets.PG_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.PG_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.PG_DATABASE }}
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+
+      - name: Slack Notification (Starting)
+        uses: act10ns/slack@v1
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          status: starting
+          channel: '#actions'
+          message: Starting Build and Test...
+        if: always()
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm install
+
+      #- name: Run ESlint
+      #  run: npm run lint
+
+      - name: Run tests
+        run: npm run test
+        env:
+          PG_USER: ${{ secrets.PG_USER }}
+          PG_HOST: ${{ secrets.PG_HOST }}
+          PG_DATABASE: ${{ secrets.PG_DATABASE }}
+          PG_PASSWORD: ${{ secrets.PG_PASSWORD }}
+          PG_PORT: '5432'
+          DB_DIALECT: 'postgres'
+          DB_POOL_CONNECTION_LIMIT: ${{ secrets.PG_POOL_CONNECTION_LIMIT }}
+          DB_POOL_IDLE_TIMEOUT: ${{ secrets.PG_POOL_IDLE_TIMEOUT }}
+          APP_PORT: '3000'
+
+      - name: SonarCloud Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: Slack Notification (Success)
+        uses: act10ns/slack@v1
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          status: success
+          channel: '#actions'
+          message: Tests end successfully
+        if: success()
