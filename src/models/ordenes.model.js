@@ -65,16 +65,5 @@ const ordenes = sequelizeInstance.define('ordenes', {
   owner: 'wilmer.cantillo'
 });
 
-// Create the table if it doesn't exist
-/*
-ordenes.sync({ force: false })
-  .then(() => {
-    console.log('Orden table created');
-  })
-  .catch(err => {
-    console.error('Error creating Orden table:', err);
-  });
-  */
-
   return ordenes
 };

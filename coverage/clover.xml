@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1687054512171" clover="3.2.0">
-  <project timestamp="1687054512171" name="All files">
+<coverage generated="1687103197696" clover="3.2.0">
+  <project timestamp="1687103197696" name="All files">
     <metrics statements="124" coveredstatements="108" conditionals="4" coveredconditionals="2" methods="16" coveredmethods="13" elements="144" coveredelements="123" complexity="0" loc="124" ncloc="124" packages="5" files="10" classes="10"/>
     <package name="src">
       <metrics statements="19" coveredstatements="18" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="2"/>
@@ -133,21 +133,21 @@
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="79" count="1" type="stmt"/>
+        <line num="68" count="1" type="stmt"/>
       </file>
       <file name="productos.models.js" path="D:\kevin\Documents\Cosas_kevin\Semestre 7\Desarrollo_2\Trabajo_final_DS2\DS2-Restaurant-Backend\src\models\productos.models.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="41" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
       </file>
       <file name="usuario.models.js" path="D:\kevin\Documents\Cosas_kevin\Semestre 7\Desarrollo_2\Trabajo_final_DS2\DS2-Restaurant-Backend\src\models\usuario.models.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="49" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.routes">
