@@ -58,11 +58,11 @@ jobs:
       - name: Run tests
         run: npm run test
         env:
-          DB_USER: ${{ secrets.PG_USER }}
-          DB_HOST: ${{ secrets.PG_HOST }}
-          DATABASE: ${{ secrets.PG_DATABASE }}
-          DB_HMAC: ${{ secrets.PG_PASSWORD }}
-          DB_PORT: '5432'
+          user: ${{ secrets.PG_USER }}
+          host: ${{ secrets.PG_HOST }}
+          database: ${{ secrets.PG_DATABASE }}
+          password: ${{ secrets.PG_PASSWORD }}
+          port: '5432'
           DB_DIALECT: 'postgres'
           DB_POOL_CONNECTION_LIMIT: ${{ secrets.PG_POOL_CONNECTION_LIMIT }}
           DB_POOL_IDLE_TIMEOUT: ${{ secrets.PG_POOL_IDLE_TIMEOUT }}
