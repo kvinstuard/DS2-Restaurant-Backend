@@ -1,9 +1,16 @@
 
+process.env.NODE_ENV = "test";
+const models = require('../src/models/index');
+const { QueryTypes } = require("sequelize");
+const sequelizeInstance = models.sequelizeInstance;
+
+//
 const { Pool } = require('pg');
 const { app, server} = require('../src/index');
 const supertest = require('supertest');
 const api = supertest(app)
     
+
 
 describe('Testing GET/', () => {
     
