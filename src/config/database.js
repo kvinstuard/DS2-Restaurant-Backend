@@ -12,7 +12,7 @@ const client = new Client({
       PG_DIALECT: 'postgres',
       PG_POOL_CONNECTION_LIMIT: +process.env.PG_POOL_CONNECTION_LIMIT,
 	    PG_POOL_IDLE_TIMEOUT: +process.env.PG_POOL_IDLE_TIMEOUT,
-      ssl: true,
+      ssl: require,
     });
     await client.connect();
     return client;
