@@ -1,4 +1,4 @@
-name: Node.js App
+name: Deploy-Node.js-App
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-and-docker:
+  build-docker-deploy:
     runs-on: ubuntu-latest
     steps:
     - name: Slack Notification
