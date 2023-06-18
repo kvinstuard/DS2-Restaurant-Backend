@@ -3,7 +3,7 @@ name: test-nodejs-app
 on:
   push:
     branches:
-      - feature_fix
+      - develop
   pull_request:
     branches:
       - develop
@@ -32,14 +32,14 @@ jobs:
 
     steps:
 
-     # - name: Slack Notification (Starting)
-     #   uses: act10ns/slack@v1
-     #   with:
-     #     webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
-     #     status: starting
-     #     channel: '#actions'
-     #     message: Starting Build and Test...
-     #   if: always()
+      - name: Slack Notification (Starting)
+        uses: act10ns/slack@v1
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          status: starting
+          channel: '#actions'
+          message: Starting Build and Test...
+        if: always()
 
       - name: Checkout code
         uses: actions/checkout@v2
