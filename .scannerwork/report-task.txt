@@ -2,5 +2,5 @@ projectKey=prueba_local
 serverUrl=http://localhost:9000
 serverVersion=10.0.0.68432
 dashboardUrl=http://localhost:9000/dashboard?id=prueba_local
-ceTaskId=AYjPhSRRSYbOGSzeaDEi
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYjPhSRRSYbOGSzeaDEi
+ceTaskId=AYjPmS0oSYbOGSzeaDEj
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYjPmS0oSYbOGSzeaDEj

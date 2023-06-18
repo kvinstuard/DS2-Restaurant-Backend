@@ -31,6 +31,7 @@
     "testEnvironment": "node",
     "collectCoverage": true,
     "reportFile": "test-report.xml",
+    "reportPath": "./coverage",
     "indent": 4,
     "testResultsProcessor": "jest-sonar-reporter",
     "coveragePathIgnorePatterns": [
