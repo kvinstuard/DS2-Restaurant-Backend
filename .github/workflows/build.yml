@@ -67,7 +67,7 @@ jobs:
           DB_POOL_CONNECTION_LIMIT: ${{ secrets.PG_POOL_CONNECTION_LIMIT }}
           DB_POOL_IDLE_TIMEOUT: ${{ secrets.PG_POOL_IDLE_TIMEOUT }}
           APP_PORT: '3000'
-
+          ssl: true
       - name: SonarCloud Checkout code
         uses: actions/checkout@v2
         with:
