@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+  <file path="D:\kevin\Documents\Cosas_kevin\Semestre 7\Desarrollo_2\Trabajo_final_DS2\DS2-Restaurant-Backend\test\index.test.js">
+    <testCase name="Testing GET/ should respond with a 200 status code" duration="1100"/>
+    <testCase name="Testing GET/ should respond with a 200 status code" duration="980"/>
+    <testCase name="Testing GET/ should respond with a 200 status code" duration="1089"/>
+    <testCase name="Testing GET/ should respond with a 200 status code" duration="1203"/>
+    <testCase name="Testing POST/ should respond with a 200 status code and message" duration="1163"/>
+    <testCase name="Testing POST/ should respond with a 200 status code and message" duration="1053"/>
+    <testCase name="Testing POST/ should respond with a 200 status code and message" duration="14"/>
+    <testCase name="Testing POST/ should respond with a 200 status code and message" duration="1076"/>
+  </file>
+</testExecutions>
