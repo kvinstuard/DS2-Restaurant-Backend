@@ -24,14 +24,11 @@
     "sonar": "sonar-scanner",
     "test":  "jest --coverage --silent",    
     "test:detect": "jest --detectOpenHandles",
-    "lint": "eslint .",
-    "test:coverage": "jest --verbose --silent"
+    "lint": "eslint ."
   },
   "jest": {
     "testEnvironment": "node",
     "collectCoverage": true,
-    "reportFile": "test-report.xml",
-    "indent": 4,
     "testResultsProcessor": "jest-sonar-reporter",
     "coveragePathIgnorePatterns": [
       "/node_modules/",
