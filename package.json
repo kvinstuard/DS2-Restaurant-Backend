@@ -24,8 +24,7 @@
     "sonar": "sonar-scanner",
     "test":  "jest --coverage --silent",    
     "test:detect": "jest --detectOpenHandles",
-    "lint": "eslint .",
-    "test:coverage": "jest --verbose --silent"
+    "lint": "eslint ."
   },
   "jest": {
     "testEnvironment": "node",
