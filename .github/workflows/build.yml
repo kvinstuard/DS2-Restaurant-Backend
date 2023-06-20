@@ -34,14 +34,14 @@ jobs:
 
     steps:
 
-      #- name: Slack Notification (Starting)
-      #  uses: act10ns/slack@v1
-      #  with:
-      #    webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
-      #    status: starting
-      #    channel: '#actions'
-      #    message: Starting Build and Test...
-      #  if: always()
+      - name: Slack Notification (Starting)
+        uses: act10ns/slack@v1
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          status: starting
+          channel: '#actions'
+          message: Starting Build and Test...
+        if: always()
 
       - name: Checkout code
         uses: actions/checkout@v2
@@ -80,11 +80,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-      #- name: Slack Notification (Success)
-      #  uses: act10ns/slack@v1
-      #  with:
-      #    webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
-      #    status: success
-      #    channel: '#actions'
-      #    message: Tests end successfully
-      #  if: success()
+      - name: Slack Notification (Success)
+        uses: act10ns/slack@v1
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          status: success
+          channel: '#actions'
+          message: Tests end successfully
+        if: success()
