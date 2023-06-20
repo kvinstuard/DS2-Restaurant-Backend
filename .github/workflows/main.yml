@@ -1,4 +1,4 @@
-name: Node.js App
+name: Deploy-Node.js-App
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-and-docker:
+  build-docker-deploy:
     runs-on: ubuntu-latest
     steps:
     - name: Slack Notification
@@ -51,3 +51,11 @@ jobs:
         tag_with_ref: true
         tag_with_sha: true
         tags: ${{ secrets.DOCKER_USERNAME }}/app:latest
+    - name: Slack Notification (Success)
+        uses: act10ns/slack@v1
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          status: success
+          channel: '#actions'
+          message: Tests end successfully
+        if: success()

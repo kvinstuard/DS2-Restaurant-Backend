@@ -36,15 +36,5 @@ const usuario = sequelizeInstance.define('usuario', {
   owner: 'wilmer.cantillo'
 });
 
-// Create the table if it doesn't exist
-/*
-usuario.sync({ force: false })
-  .then(() => {
-    console.log('Usuario table created');
-  })
-  .catch(err => {
-    console.error('Error creating Usuario table:', err);
-  });
-  */
   return usuario
 };

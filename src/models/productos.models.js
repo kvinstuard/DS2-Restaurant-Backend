@@ -28,15 +28,5 @@ const productos = sequelizeInstance.define('productos', {
   owner: 'wilmer.cantillo'
 });
 
-// Create the table if it doesn't exist
-/*
-productos.sync({ force: false })
-  .then(() => {
-    console.log('Producto table created');
-  })
-  .catch(err => {
-    console.error('Error creating Producto table:', err);
-  });
-  */
   return productos
 };
