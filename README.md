@@ -3,11 +3,11 @@
 
 ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
 
-##About
+## About
 This is a project developed for the DS2 classes, we've use different tools and strategies related to DevOps philosophy.
 This is an a administrations KanBan for a restaurant.
 
-###Built With
+### Built With
 -  ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
 - ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) 
@@ -34,7 +34,7 @@ This is an a administrations KanBan for a restaurant.
 - Release - App ready for deployment
 - Deploy - release to a production env with vercel
 
-##Getting started
+## Getting started
 ### Installation
 
 _Below are there the steps to be follow in order to install and execute the app._
@@ -59,7 +59,7 @@ _Below are there the steps to be follow in order to install and execute the app.
   PG_POOL_IDLE_TIMEOUT=30000 
 ```
   
-  ##CI/CD
+## CI/CD
 *build.yml - This action run on every push and pull request to the feature_* and develop branches it runs several jobs and a Postgres service use for testing.
 - Slack notification (starting): this job send a slack notification of starting execution to a Slack channel. 
 - Lint - It runs eslint to check if there are any linting errors.
