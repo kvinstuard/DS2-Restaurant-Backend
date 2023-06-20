@@ -58,6 +58,7 @@ _Below are there the steps to be follow in order to install and execute the app.
   PG_POOL_CONNECTION_LIMIT=10 
   PG_POOL_IDLE_TIMEOUT=30000 
 ```
+Its necessary to add a SQL file.
   
 ## CI/CD
 ### build.yml - This action run on every push and pull request to the feature_* and develop branches it runs several jobs and a Postgres service use for testing.
