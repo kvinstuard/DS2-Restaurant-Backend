@@ -60,14 +60,15 @@ _Below are there the steps to be follow in order to install and execute the app.
 ```
   
 ## CI/CD
-*build.yml - This action run on every push and pull request to the feature_* and develop branches it runs several jobs and a Postgres service use for testing.
+* build.yml - This action run on every push and pull request to the feature_* and develop branches it runs several jobs and a Postgres service use for testing.
 - Slack notification (starting): this job send a slack notification of starting execution to a Slack channel. 
 - Lint - It runs eslint to check if there are any linting errors.
 - Test - It runs the unit and integration tests using jest.
 - Sonar - It runs SonarCloud analysis. This uses SonarCloud to analyze the code and find bugs, vulnerabilities, code smells, etc
 - Slack notification (succes): this job send a slack notification of succes execution to a Slack channel. 
 
-*main.yml - This action run on every push and pull request to the main branch it runs several jobs.
+* main.yml - This action run on every push and pull request to the main branch it runs several jobs.
 - Slack notification (starting): this job send a slack notification of starting execution to a Slack channel. 
 - Deploy: ...
 - Docker: This job create a docker image of the project and publish it on docker_hub.
+- Slack notification (succes): this job send a slack notification of succes execution to a Slack channel. 
