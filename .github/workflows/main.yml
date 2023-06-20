@@ -51,11 +51,11 @@ jobs:
         tag_with_ref: true
         tag_with_sha: true
         tags: ${{ secrets.DOCKER_USERNAME }}/app:latest
-    #- name: Slack Notification (Success)
-      #  uses: act10ns/slack@v1
-      #  with:
-      #    webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
-      #    status: success
-      #    channel: '#actions'
-      #    message: Tests end successfully
-      #  if: success()
+    - name: Slack Notification (Success)
+        uses: act10ns/slack@v1
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          status: success
+          channel: '#actions'
+          message: Tests end successfully
+        if: success()
