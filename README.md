@@ -25,7 +25,7 @@ This is an a administrations KanBan for a restaurant.
 - ![SonarQube](https://img.shields.io/badge/SonarQube-black?style=for-the-badge&logo=sonarqube&logoColor=4E9BCD)
 - ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white) 
 
-##Diseño del Sistema: 
+## Diseño del Sistema: 
 ![](images/pipeline.png)
 
 - Control version (git) - git and gitflow as strategy for work flow.
